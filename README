@@ -1,0 +1,9 @@
+Demonstration on how to develop SPI driver using Test Driven Approach (TDD).
+
+Unity TDD framework for C will be used: http://www.throwtheswitch.org/unity
+
+Code is developed for Atmega328p, test harness will run on desktop platform.
+
+
+
+
