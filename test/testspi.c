@@ -40,11 +40,24 @@ TEST(spi, DataDirectionConstants)
 	TEST_ASSERT_EQUAL(5, DD_SCK);
 }
 
+TEST(spi, Init)
+{
+	uint8_t DDR = 0x00;
+	uint8_t SPDR = 0x00;
+	uint8_t SPCR = 0x00;
+	uint8_t SPSR = 0x00;
+	
+	SPI_MasterInit(&DDR, &SPDR, &SPCR, &SPSR);
+
+	TEST_ASSERT_EQUAL_HEX8((1<<DD_MOSI)|(1<<DD_SCK), DDR);
+}
+
 
 TEST_GROUP_RUNNER(spi)
 { 
 	RUN_TEST_CASE(spi, ControlRegisterConstants);
 	RUN_TEST_CASE(spi, StatusRegisterConstants);
 	RUN_TEST_CASE(spi, DataDirectionConstants);
+	RUN_TEST_CASE(spi, Init);
 }
 
