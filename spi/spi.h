@@ -15,7 +15,7 @@
 
 /* Status register constants */
 #define SPI2X 0
-#define WCOL 0
-#define SPIF 0
+#define WCOL 6
+#define SPIF 7
 
 #endif
