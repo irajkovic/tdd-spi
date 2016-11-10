@@ -3,7 +3,7 @@
 
 /****** ATMEGA328p pin definitions  ******/
 
-/* Control register */
+/* Control register constants */
 #define SPR0 0
 #define SPR1 1
 #define CPHA 2
@@ -12,5 +12,10 @@
 #define DORD 5
 #define SPE 6
 #define SPIE 7
+
+/* Status register constants */
+#define SPI2X 0
+#define WCOL 0
+#define SPIF 0
 
 #endif

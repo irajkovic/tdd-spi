@@ -24,8 +24,16 @@ TEST(spi, ControlRegisterConstants)
 	TEST_ASSERT_EQUAL_HEX8(7, SPIE);
 }
 
+TEST(spi, StatusRegisterConstants)
+{
+	TEST_ASSERT_EQUAL_HEX8(0, SPI2X);
+	TEST_ASSERT_EQUAL_HEX8(6, WCOL);
+	TEST_ASSERT_EQUAL_HEX8(7, SPIF);
+}
+
 TEST_GROUP_RUNNER(spi)
 { 
 	RUN_TEST_CASE(spi, ControlRegisterConstants);
+	RUN_TEST_CASE(spi, StatusRegisterConstants);
 }
 
