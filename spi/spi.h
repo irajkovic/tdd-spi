@@ -18,4 +18,16 @@
 #define WCOL 6
 #define SPIF 7
 
+/* Data direction constants */
+#define DD_SS 0	
+#define DD_MOSI 0
+#define DD_MISO 0
+#define DD_SCK 0
+
+/****** Function definitions *******/
+void SPI_MasterInit(	volatile uint8_t* DDR,		/* SPI port data direction */
+						volatile uint8_t* SPDR,		/* data */
+						volatile uint8_t* SPCR,		/* config */
+						volatile uint8_t* SPSR		/* status */);
+
 #endif

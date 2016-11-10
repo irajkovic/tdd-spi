@@ -31,9 +31,20 @@ TEST(spi, StatusRegisterConstants)
 	TEST_ASSERT_EQUAL_HEX8(7, SPIF);
 }
 
+TEST(spi, DataDirectionConstants)
+{
+	/* Table 14-3 */ 
+	TEST_ASSERT_EQUAL(2, DD_SS);
+	TEST_ASSERT_EQUAL(3, DD_MOSI);
+	TEST_ASSERT_EQUAL(4, DD_MISO);
+	TEST_ASSERT_EQUAL(5, DD_SCK);
+}
+
+
 TEST_GROUP_RUNNER(spi)
 { 
 	RUN_TEST_CASE(spi, ControlRegisterConstants);
 	RUN_TEST_CASE(spi, StatusRegisterConstants);
+	RUN_TEST_CASE(spi, DataDirectionConstants);
 }
 
