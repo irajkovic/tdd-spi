@@ -11,6 +11,12 @@ TEST_TEAR_DOWN(spi)
 {
 }
 
+/* Fake registers */
+uint8_t DDR = 0x00;
+uint8_t SPDR = 0x00;
+uint8_t SPCR = 0x00;
+uint8_t SPSR = 0x00;
+
 /* Tests */
 TEST(spi, ControlRegisterConstants)
 {
@@ -41,16 +47,17 @@ TEST(spi, DataDirectionConstants)
 }
 
 TEST(spi, Init)
-{
-	uint8_t DDR = 0x00;
-	uint8_t SPDR = 0x00;
-	uint8_t SPCR = 0x00;
-	uint8_t SPSR = 0x00;
-	
+{	
 	SPI_MasterInit(&DDR, &SPDR, &SPCR, &SPSR);
 
 	TEST_ASSERT_EQUAL_HEX8((1<<DD_MOSI)|(1<<DD_SCK), DDR);
 	TEST_ASSERT_EQUAL_HEX8((1<<SPE)|(1<<MSTR)|(1<<SPR0), SPCR);
+}
+
+TEST(spi, SendByte)
+{
+	SPI_SendByte(0xA5);
+	TEST_ASSERT_EQUAL_HEX8(0xA5, SPDR);
 }
 
 
@@ -60,5 +67,12 @@ TEST_GROUP_RUNNER(spi)
 	RUN_TEST_CASE(spi, StatusRegisterConstants);
 	RUN_TEST_CASE(spi, DataDirectionConstants);
 	RUN_TEST_CASE(spi, Init);
+	RUN_TEST_CASE(spi, SendByte);
 }
+
+
+
+
+
+
 

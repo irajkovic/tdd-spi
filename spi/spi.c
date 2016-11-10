@@ -9,3 +9,7 @@ void SPI_MasterInit(	volatile uint8_t* DDR,		/* SPI port data direction */
 	*SPCR = BIT(SPE) | BIT(MSTR) | BIT(SPR0);
 }
 
+void SPI_SendByte(const uint8_t byte)
+{
+
+}
