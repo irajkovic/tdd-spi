@@ -5,12 +5,12 @@
 
 /* Control register */
 #define SPR0 0
-#define SPR1 0
-#define CPHA 0
-#define CPOL 0
-#define MSTR 0
-#define DORD 0
-#define SPE 0
-#define SPIE 0
+#define SPR1 1
+#define CPHA 2
+#define CPOL 3
+#define MSTR 4
+#define DORD 5
+#define SPE 6
+#define SPIE 7
 
 #endif
