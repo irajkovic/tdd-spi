@@ -50,6 +50,7 @@ TEST(spi, Init)
 	SPI_MasterInit(&DDR, &SPDR, &SPCR, &SPSR);
 
 	TEST_ASSERT_EQUAL_HEX8((1<<DD_MOSI)|(1<<DD_SCK), DDR);
+	TEST_ASSERT_EQUAL_HEX8((1<<SPE)|(1<<MSTR)|(1<<SPR0), SPCR);
 }
 
 
