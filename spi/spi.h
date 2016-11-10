@@ -1,6 +1,9 @@
 #ifndef SPI
 #define SPI
 
+#define PIN(n) (1 << n)
+#define BIT(n) (1 << n)
+
 /****** ATMEGA328p pin definitions  ******/
 
 /* Control register constants */
