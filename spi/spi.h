@@ -19,10 +19,10 @@
 #define SPIF 7
 
 /* Data direction constants */
-#define DD_SS 0	
-#define DD_MOSI 0
-#define DD_MISO 0
-#define DD_SCK 0
+#define DD_SS 2
+#define DD_MOSI 3
+#define DD_MISO 4
+#define DD_SCK 5
 
 /****** Function definitions *******/
 void SPI_MasterInit(	volatile uint8_t* DDR,		/* SPI port data direction */
