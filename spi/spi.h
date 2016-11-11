@@ -29,13 +29,6 @@
 
 #include <inttypes.h>
 
-/* Holding pointers to registers */ 
-struct Registers
-{
-	volatile uint8_t* SPDR;	/* SPI Data Register */
-	volatile uint8_t* SPSR;	/* SPI Data Status Register */
-};
-
 /****** Function definitions *******/
 void SPI_MasterInit(	volatile uint8_t* DDR,		/* SPI port data direction */
 						volatile uint8_t* SPDR,		/* data */
