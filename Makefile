@@ -9,11 +9,13 @@ SRC := 	spi/spi.c \
 	hal/hal.c \
 	Unity/extras/fixture/src/unity_fixture.c \
 	Unity/src/unity.c 
+	
+OPTIONS := -DTESTING	
 
 TESTAPP := test.run
 
 compile-tests:
-	gcc $(INC) $(SRC) test/main.c -o $(TESTAPP)
+	gcc $(OPTIONS) $(INC) $(SRC) test/main.c -o $(TESTAPP)
 	
 run-tests:	compile-tests
 	./$(TESTAPP)

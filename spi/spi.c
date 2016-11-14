@@ -1,6 +1,8 @@
 #include "spi.h"
 #include "hal.h"
 
+extern struct Registers REGS;
+
 void SPI_MasterInit(	volatile uint8_t* DDR,		/* SPI port data direction */
 						volatile uint8_t* SPDR,		/* data */
 						volatile uint8_t* SPCR,		/* config */
@@ -14,5 +16,11 @@ void SPI_MasterInit(	volatile uint8_t* DDR,		/* SPI port data direction */
 
 void SPI_SendByte(const uint8_t byte)
 {
-	RegSetSPDR(byte);
+	SPDR_set(byte);
+	
+	while(REG_bit_is_off(SPSR, SPIF))
+		; // wait
 }
+
+
+

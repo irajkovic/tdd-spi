@@ -56,10 +56,22 @@ TEST(spi, Init)
 
 TEST(spi, SendByte)
 {
-	SPI_SendByte(0xA5);
-	TEST_ASSERT_EQUAL_HEX8(0xA5, SPDR);
+	// setup
+	const uint8_t data = 0xA5;
+	SPSR = 0x00;
+	SPDR = 0x00;
+	
+	// exercise
+	SPI_SendByte(data);
+	
+	// verify
+	TEST_ASSERT_EQUAL_HEX8(data, SPDR);
+	TEST_ASSERT_EQUAL_HEX8(BIT(SPIF), SPSR);
+		
+	// cleanup
+	SPSR = 0x00;
+	SPDR = 0x00;	
 }
-
 
 TEST_GROUP_RUNNER(spi)
 { 
