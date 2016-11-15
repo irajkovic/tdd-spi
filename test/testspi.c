@@ -2,20 +2,22 @@
 
 TEST_GROUP(spi);
 
+/* Fake registers */
+uint8_t DDR = 0x00;
+uint8_t SPDR = 0x00;
+uint8_t SPCR = 0x00;
+uint8_t SPSR = 0x00;
+
 TEST_SETUP(spi)
 {
-	
+	InitRegisterAddresses(&SPDR,&SPSR,&SPCR,&DDR);
 }
 
 TEST_TEAR_DOWN(spi)
 {
 }
 
-/* Fake registers */
-uint8_t DDR = 0x00;
-uint8_t SPDR = 0x00;
-uint8_t SPCR = 0x00;
-uint8_t SPSR = 0x00;
+
 
 /* Tests */
 TEST(spi, ControlRegisterConstants)
@@ -48,7 +50,7 @@ TEST(spi, DataDirectionConstants)
 
 TEST(spi, Init)
 {	
-	SPI_MasterInit(&DDR, &SPDR, &SPCR, &SPSR);
+	SPI_MasterInit();
 
 	TEST_ASSERT_EQUAL_HEX8((1<<DD_MOSI)|(1<<DD_SCK), DDR);
 	TEST_ASSERT_EQUAL_HEX8((1<<SPE)|(1<<MSTR)|(1<<SPR0), SPCR);
@@ -60,6 +62,7 @@ TEST(spi, SendByte)
 	const uint8_t data = 0xA5;
 	SPSR = 0x00;
 	SPDR = 0x00;
+	SPI_MasterInit();
 	
 	// exercise
 	SPI_SendByte(data);

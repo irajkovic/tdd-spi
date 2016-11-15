@@ -2,11 +2,9 @@ INC := -IUnity/extras/fixture/src/ \
 	-IUnity/src/ \
 	-Itest/ \
 	-Ispi/ \
-	-Ihal/
 	
 SRC := 	spi/spi.c \
 	test/testspi.c \
-	hal/hal.c \
 	Unity/extras/fixture/src/unity_fixture.c \
 	Unity/src/unity.c 
 	
@@ -15,7 +13,9 @@ OPTIONS := -DTESTING
 TESTAPP := test.run
 
 compile-tests:
-	gcc $(OPTIONS) $(INC) $(SRC) test/main.c -o $(TESTAPP)
+	$(eval INC += -Itest/hal)
+	$(eval SRC += test/hal/hal.c)
+	gcc $(INC) $(SRC) test/main.c -o $(TESTAPP)
 	
 run-tests:	compile-tests
 	./$(TESTAPP)
