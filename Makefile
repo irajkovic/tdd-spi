@@ -8,8 +8,6 @@ SRC := 	spi/spi.c \
 	Unity/extras/fixture/src/unity_fixture.c \
 	Unity/src/unity.c 
 	
-OPTIONS := -DTESTING	
-
 TESTAPP := test.run
 
 compile-tests:
